@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.calculator-body {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 300px;
+}
+
+.display-box,
+.first-row,
+.second-row,
+.third-row,
+.fourth-row,
+.fifth-row {
+  flex-grow: 1;
+  display: flex;
+}
+
+.first,
+.second,
+.third,
+.fourth,
+.fifth {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#button {
+  background-color: aqua;
+}
