@@ -8,8 +8,18 @@
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 550px;
   width: 400px;
+  border: solid salmon 10px;
+  background-color: wheat;
+  padding: 2px;
+}
+
+.display-box {
+  flex-basis: 80px;
+  border: 5px black solid;
+  background-color: azure;
+  margin: 2px;
 }
 
 .display-box,
@@ -36,7 +46,13 @@
 }
 
 #button {
-  background-color: aqua;
-  margin: 10px;
-  border-radius: 30px;
+  background-color: greenyellow;
+  border-radius: 10px;
+  border: 3px solid brown;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.zero {
+  flex-grow: 3;
 }
