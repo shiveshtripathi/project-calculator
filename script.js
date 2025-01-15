@@ -7,7 +7,8 @@ buttonData.forEach((button) => {
   button.addEventListener('click', () => {
     const buttonValue = button.textContent
     console.log(`${buttonValue} Button was clicked`)
-    displayArithmetic.textContent = buttonValue
+    if (buttonValue === 'AC') resetCalculator()
+    else displayScreen(buttonValue)
   })
 })
 
@@ -15,4 +16,8 @@ function resetCalculator() {
   displayArithmetic.textContent = ''
   let firstOperand = 0
   let secondOperand = 0
+}
+
+function displayScreen(buttonValue) {
+  displayArithmetic.textContent += buttonValue
 }
