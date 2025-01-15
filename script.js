@@ -1,5 +1,7 @@
 const buttonData = document.querySelectorAll('#button')
 const displayArithmetic = document.querySelector('.display-box')
+let firstOperand = 0
+let secondOperand = 0
 
 buttonData.forEach((button) => {
   button.addEventListener('click', () => {
@@ -8,3 +10,9 @@ buttonData.forEach((button) => {
     displayArithmetic.textContent = buttonValue
   })
 })
+
+function resetCalculator() {
+  displayArithmetic.textContent = ''
+  let firstOperand = 0
+  let secondOperand = 0
+}
