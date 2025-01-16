@@ -9,12 +9,7 @@ buttonData.forEach((button) => {
     const buttonValue = button.textContent
     console.log(`${buttonValue} Button was clicked`)
     if (buttonValue === 'AC') resetCalculator()
-    else if (isNumeric(buttonValue) || buttonValue === '.') {
-      firstOperand(buttonValue)
-      displayScreen(buttonValue)
-      console.log(firstOperand)
-    } else displayScreen(buttonValue)
-  })
+    
 })
 
 function resetCalculator() {
