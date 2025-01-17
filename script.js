@@ -1,7 +1,7 @@
 const buttonData = document.querySelectorAll('#button')
 const displayArithmetic = document.querySelector('.display-box')
 let firstOperand = 0
-let secondOperand = 0
+let operator = 0
 let tempHolder = 0
 let result = 0
 const isNumeric = (string) => /^[+-]?\d+(\.\d+)?$/.test(string)
@@ -9,27 +9,36 @@ const isNumeric = (string) => /^[+-]?\d+(\.\d+)?$/.test(string)
 buttonData.forEach((button) => {
   button.addEventListener('click', () => {
     const buttonValue = button.textContent
-    if (buttonValue === '=') {
-      result = add(Number(firstOperand), Number(tempHolder))
+    displayScreen(buttonValue)
+    if (button.classList.contains('reset')) {
       resetCalculator()
-      displayScreen(result)
-      tempHolder = result
-      result = 0
-      console.log(`TempHolder ${tempHolder} Result ${result}`)
-    } else if (buttonValue === 'AC') resetCalculator()
-    else if (
-      buttonValue === '/' ||
-      buttonValue === '*' ||
-      buttonValue === '-' ||
-      buttonValue === '+'
-    ) {
+    } else if (button.classList.contains('operator')) {
       firstOperand = tempHolder
       tempHolder = 0
-      displayScreen(buttonValue)
-    } else if (isNumeric(buttonValue) || buttonValue === '.') {
+      operator = buttonValue
+    } else if (button.classList.contains('number')) {
       tempHolder += buttonValue
-      console.log(` Temp ${tempHolder}`)
-      displayScreen(buttonValue)
+    } else if (button.classList.contains('equal-to')) {
+      if (operator === '/') {
+        result = division(Number(firstOperand), Number(tempHolder))
+        resetCalculator()
+        displayScreen(result)
+      }
+      if (operator === '*') {
+        result = multiplication(Number(firstOperand), Number(tempHolder))
+        resetCalculator()
+        displayScreen(result)
+      }
+      if (operator === '-') {
+        result = subtraction(Number(firstOperand), Number(tempHolder))
+        resetCalculator()
+        displayScreen(result)
+      }
+      if (operator === '+') {
+        result = addition(Number(firstOperand), Number(tempHolder))
+        resetCalculator()
+        displayScreen(result)
+      }
     }
   })
 })
@@ -37,7 +46,6 @@ buttonData.forEach((button) => {
 function resetCalculator() {
   displayArithmetic.textContent = ''
   firstOperand = 0
-  secondOperand = 0
   tempHolder = 0
 }
 
@@ -45,14 +53,18 @@ function displayScreen(buttonValue) {
   displayArithmetic.textContent += buttonValue
 }
 
-function storeFirstOperandValue(buttonValue) {
-  firstOperand += buttonValue
-}
-
-function storeSecondOperandValue(buttonValue) {
-  secondOperand += buttonValue
-}
-
-function add(firstOperand, secondOperand) {
+function addition(firstOperand, secondOperand) {
   return firstOperand + secondOperand
+}
+
+function subtraction(firstOperand, secondOperand) {
+  return firstOperand - secondOperand
+}
+
+function division(firstOperand, secondOperand) {
+  return firstOperand / secondOperand
+}
+
+function multiplication(firstOperand, secondOperand) {
+  return firstOperand * secondOperand
 }
