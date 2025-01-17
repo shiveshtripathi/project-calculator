@@ -13,6 +13,7 @@ buttonData.forEach((button) => {
     if (button.classList.contains('reset')) {
       resetCalculator()
     } else if (button.classList.contains('operator')) {
+      displayArithmetic.textContent = ''
       if (result !== 0) {
         firstOperand = result
         result = 0
@@ -47,6 +48,10 @@ buttonData.forEach((button) => {
         resetCalculator()
         displayScreen(result)
       }
+    } else if (button.classList.contains('polarity')) {
+      tempHolder = polarity(tempHolder)
+      displayArithmetic.textContent = ''
+      displayScreen(tempHolder)
     }
   })
 })
@@ -75,4 +80,8 @@ function division(firstOperand, secondOperand) {
 
 function multiplication(firstOperand, secondOperand) {
   return firstOperand * secondOperand
+}
+
+function polarity(operand) {
+  return -1 * Number(operand)
 }
