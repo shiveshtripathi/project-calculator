@@ -13,10 +13,18 @@ buttonData.forEach((button) => {
     if (button.classList.contains('reset')) {
       resetCalculator()
     } else if (button.classList.contains('operator')) {
-      firstOperand = tempHolder
+      if (result !== 0) {
+        firstOperand = result
+        result = 0
+      } else firstOperand = tempHolder
       tempHolder = 0
       operator = buttonValue
     } else if (button.classList.contains('number')) {
+      if (result !== 0) {
+        result = 0
+        resetCalculator()
+        displayScreen(buttonValue)
+      }
       tempHolder += buttonValue
     } else if (button.classList.contains('equal-to')) {
       if (operator === '/') {
