@@ -97,8 +97,16 @@ function displayScreen(buttonValue, button) {
   } else if (
     isNumeric(Number(buttonValue)) ||
     button.classList.contains('decimal')
-  )
+  ) {
+    if (
+      button.classList.contains('equal-to') &&
+      buttonValue.toString().length > 8
+    ) {
+      buttonValue = buttonValue.toExponential(2) // "1.23e+8"
+    }
+
     displayArithmetic.textContent += buttonValue
+  }
 }
 
 function addition(firstOperand, secondOperand) {
