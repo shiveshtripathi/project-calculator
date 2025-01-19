@@ -30,9 +30,6 @@ buttonData.forEach((button) => {
       } else {
         if (result !== 0) {
           //if result is not zero previous result is stored in it
-          console.log(
-            `Operator result reset FirstOperand -> ${firstOperand} TempHolder -> ${tempHolder} Result -> ${result}`
-          )
           firstOperand = result
           result = 0
         } else {
@@ -55,15 +52,14 @@ buttonData.forEach((button) => {
       }
       //if there is result stored from previous operation reset it to zero
       if (result !== 0) {
-        console.log(
-          `Number result reset FirstOperand -> ${firstOperand} TempHolder -> ${tempHolder} Result -> ${result}`
-        )
         result = 0
         resetCalculator()
         displayScreen(buttonValue, button)
       }
       tempHolder += buttonValue
-    } else if (button.classList.contains('equal-to')) {
+    }
+    //when equal to is clicked
+    else if (button.classList.contains('equal-to')) {
       if (operator === '/') {
         result = division(Number(firstOperand), Number(tempHolder))
         resetCalculator()
@@ -92,7 +88,9 @@ buttonData.forEach((button) => {
         operator = 'Operation Done'
         additionSelector.style.opacity = 1
       }
-    } else if (button.classList.contains('polarity')) {
+    }
+    //Polarity
+    else if (button.classList.contains('polarity')) {
       if (result !== 0) {
         result = polarity(result)
         displayArithmetic.textContent = ''
@@ -102,7 +100,9 @@ buttonData.forEach((button) => {
         displayArithmetic.textContent = ''
         displayScreen(tempHolder, button)
       }
-    } else if (button.classList.contains('percentage')) {
+    }
+    //Display percentage
+    else if (button.classList.contains('percentage')) {
       if (result !== 0) {
         result = percentage(result)
         displayArithmetic.textContent = ''
@@ -113,9 +113,6 @@ buttonData.forEach((button) => {
         displayScreen(tempHolder, button)
       }
     }
-    console.log(
-      `Outside result reset FirstOperand -> ${firstOperand} TempHolder -> ${tempHolder} Result -> ${result}`
-    )
   })
 })
 
