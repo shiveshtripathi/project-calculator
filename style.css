@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 .calculator-body {
@@ -13,6 +16,7 @@
   border: solid salmon 10px;
   background-color: wheat;
   padding: 2px;
+  margin-top: 20px;
 }
 
 .display-box {
@@ -60,4 +64,41 @@
 
 .zero {
   flex-grow: 3;
+}
+
+/* Header */
+.project-calculator {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #4caf50; /* Green background */
+  text-align: center;
+  width: 400px;
+  padding: 20px;
+  border-bottom: 5px solid #2e7d32; /* Darker green border */
+  margin: 0 auto; /* Center the header horizontally */
+}
+
+/* Footer */
+footer {
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #333333; /* Dark gray background */
+  text-align: center;
+  padding: 10px 20px;
+  border-top: 3px solid #4caf50; /* Green border */
+  position: fixed;
+  bottom: 0;
+  width: 100%; /* Stretch across the bottom of the viewport */
+}
+
+footer a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #1e90ff; /* Changes to blue on hover */
 }
