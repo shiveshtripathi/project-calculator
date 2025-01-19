@@ -19,6 +19,7 @@ This project is part of [The Odin Project's Foundations course](https://www.theo
 - Simplify complex conditions to improve code readability and maintainability.
 - Implement additional features like parentheses handling and memory functions.
 - Enhance error handling for invalid inputs.
+- Add keyboard input support.
 
 ## Acknowledgments
 
