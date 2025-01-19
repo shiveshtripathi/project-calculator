@@ -99,17 +99,24 @@ function displayScreen(buttonValue, button) {
     button.classList.contains('decimal')
   ) {
     if (
-      button.classList.contains('equal-to') &&
+      (button.classList.contains('equal-to') ||
+        button.classList.contains('percentage')) &&
       buttonValue.toString().length > 8
     ) {
       buttonValue = buttonValue.toExponential(2) // "1.23e+8"
-    } else if (displayArithmetic.textContent.toString().length > 7) {
+    } else if (displayArithmetic.textContent.toString().length >= 7) {
       buttonValue = ''
       displayArithmetic.textContent = displayArithmetic.textContent
         .toString()
-        .slice(0, 8)
-    } else if (buttonValue.toString().length > 7) {
-      buttonValue = buttonValue.toString().slice(0, 8)
+        .slice(0, 7)
+    } else if (buttonValue.toString().length >= 7) {
+      if (buttonValue.toString()[0] === '-') {
+        buttonValue = buttonValue.toString().slice(0, 8)
+        tempHolder = buttonValue
+      } else {
+        buttonValue = buttonValue.toString().slice(0, 7)
+        buttonValue = tempHolder
+      }
     }
     displayArithmetic.textContent += buttonValue
   }
