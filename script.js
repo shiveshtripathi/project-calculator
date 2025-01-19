@@ -92,6 +92,7 @@ function resetCalculator() {
 }
 
 function displayScreen(buttonValue, button) {
+  displayArithmetic.style.fontSize = '80px'
   if (button.classList.contains('operator')) {
     button.style.opacity = 0.25
   } else if (
@@ -119,6 +120,9 @@ function displayScreen(buttonValue, button) {
       }
     }
     displayArithmetic.textContent += buttonValue
+  } else if (buttonValue === NaN || buttonValue === Infinity) {
+    displayArithmetic.textContent = 'Cannot Divide by Zero'
+    displayArithmetic.style.fontSize = '30px'
   }
 }
 
