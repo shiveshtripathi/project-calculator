@@ -103,9 +103,14 @@ function displayScreen(buttonValue, button) {
       buttonValue.toString().length > 8
     ) {
       buttonValue = buttonValue.toExponential(2) // "1.23e+8"
-    } else if (displayArithmetic.textContent.toString().length > 7)
+    } else if (displayArithmetic.textContent.toString().length > 7) {
       buttonValue = ''
-
+      displayArithmetic.textContent = displayArithmetic.textContent
+        .toString()
+        .slice(0, 8)
+    } else if (buttonValue.toString().length > 7) {
+      buttonValue = buttonValue.toString().slice(0, 8)
+    }
     displayArithmetic.textContent += buttonValue
   }
 }
