@@ -76,6 +76,10 @@ buttonData.forEach((button) => {
       tempHolder = polarity(tempHolder)
       displayArithmetic.textContent = ''
       displayScreen(tempHolder, button)
+    } else if (button.classList.contains('percentage')) {
+      tempHolder = percentage(tempHolder)
+      displayArithmetic.textContent = ''
+      displayScreen(tempHolder, button)
     }
   })
 })
@@ -90,7 +94,10 @@ function resetCalculator() {
 function displayScreen(buttonValue, button) {
   if (button.classList.contains('operator')) {
     button.style.opacity = 0.25
-  } else if (isNumeric(Number(buttonValue)))
+  } else if (
+    isNumeric(Number(buttonValue)) ||
+    button.classList.contains('decimal')
+  )
     displayArithmetic.textContent += buttonValue
 }
 
@@ -138,4 +145,8 @@ function checkOperatorClicks() {
     (subtractionSelector.style.opacity === '0.25') +
     (additionSelector.style.opacity === '0.25')
   )
+}
+
+function percentage(operand) {
+  return Number(operand) / 100
 }
