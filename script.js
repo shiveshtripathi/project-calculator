@@ -9,7 +9,7 @@ let operator = 0 // To store the operator
 let tempHolder = 0 // Temp hold and transfer to firstOperand when operator is selected
 let result = 0 //To store the result
 let operatorClicks = 0 //To check number of times an Operator is clicked to check multiple operator clicks
-const isNumeric = (string) => /^[+-]?\d+(\.\d+)?$/.test(string) //To check the a string is numeric or not
+const isNumeric = (string) => /^-?\d*\.?\d+(?:e[-+]?\d+)?$/i.test(string) //To check the a string is numeric or not
 
 // Add event listener to each button
 buttonData.forEach((button) => {
@@ -206,5 +206,10 @@ function checkOperatorClicks() {
 }
 
 function percentage(operand) {
+  if (Math.abs(Number(operand)) >= 0.000001) {
+    operand = Number(operand)
+      .toPrecision(7)
+      .replace(/\.?0+$/, '') // Remove trailing zeros
+  }
   return Number(operand) / 100
 }
